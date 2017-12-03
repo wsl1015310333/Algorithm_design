@@ -1,5 +1,12 @@
 package 动态规划;
 
+/**
+ * 当求解总面值为 i 的找零最少硬币数 coinsUsed[ i ] 时，
+ * 将其分解成求解 coinsUsed[ i– cents]和一个面值为cents元的硬币，
+ * 由于 i– cents < i ， 其解 coinsUsed[ i– cents] 已经存在，
+ * 如果面值为 cents 的硬币满足题意，那么最终解 coinsUsed[ i ]
+ * 则等于 coinsUsed[ i– cents] 再加上 1（即面值为 cents）的这一个硬币。
+ */
 public class CoinsChange {
 public static void main(String []args){
     int[]coinValue=new int[]{25,21,10,5,1};
