@@ -3,13 +3,16 @@ package 分治算法;
 import java.math.BigInteger;
 
 public class BitIntegerMutiply {
+
+    //例子错误
  public static void main(String[] args){
-     String aString="8764928402355622359";
-     String bString="494584857599938193";
+     String aString="876";
+     String bString="49";
      BigInteger aBigInteger=new BigInteger(aString);
      BigInteger bBigInteger=new BigInteger(bString);
      String aResult=aBigInteger.multiply(bBigInteger).toString();
      String bResult=Mutiply(aString,bString);
+     System.out.println(aResult+"--"+bResult);
  }
  public static String  Mutiply(String a,String b){
      String result = "";
@@ -35,7 +38,28 @@ public class BitIntegerMutiply {
          String a0b1 = Mutiply(a0, b1);
          String a0b0 = Mutiply(a0, b0);
 
+         //3.模拟移位
+         String resulta1b1 = a1b1;
+         for (int i = 0; i < lengthA0+lengthB0; i++) {
+             resulta1b1 += "0";
+         }
+         String resulta1b0 = a1b0;
+         for (int i = 0; i <lengthA0; i++) {
+             resulta1b0 += "0";
+         }
+         String resulta0b1 = a0b1;
+         for (int i = 0; i < lengthB0; i++) {
+             resulta0b1 += "0";
+         }
+
+
+         //4.大数相加
+         result = resulta0b1+resulta1b0;
+         result = result+resulta0b1;
+         result = result+a0b0;
+
+
      }
-     return null;
+     return result;
  }
 }
